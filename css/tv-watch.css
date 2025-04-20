@@ -1,0 +1,555 @@
+body {
+    background: linear-gradient(135deg, #1a0a0a 0%, #2a1a1a 100%);
+    color: white;
+  }
+
+  .btn-purple {
+    background-color: #E30B5D;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .btn-purple:hover {
+    background-color: #C00A4F;
+  }
+
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(26, 10, 10, 0.95);
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #E30B5D;
+    text-shadow: 0 0 10px rgba(227, 11, 93, 0.3);
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+
+  .movie-details {
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    order: 1;
+  }
+
+  .movie-details img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .show-info-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .show-info-content img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .show-text {
+    flex: 1;
+    padding: 10px;
+  }
+
+  .show-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #E30B5D;
+  }
+
+  .show-text p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  #showStatus {
+    color: #E30B5D;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(227, 11, 93, 0.1);
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .cast-section {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 120px;
+    order: 2;
+    transition: min-height 0.3s ease;
+  }
+
+  .cast-section.expanded {
+    min-height: 170px;
+  }
+
+  .cast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .cast-section h4 {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .btn-purple.btn-sm {
+    padding: 4px 12px;
+    font-size: 0.8rem;
+  }
+
+  .cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+    padding-right: 5px;
+    transition: max-height 0.3s ease;
+  }
+
+  .cast-grid.expanded {
+    max-height: 170px;
+  }
+
+  .cast-grid::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .cast-grid::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 3px;
+  }
+
+  .cast-grid::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+  }
+
+  .cast-grid::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
+
+  .actor-card {
+    background-color: #2a2a2a;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .actor-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .actor-card img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-bottom: 1px solid #333;
+  }
+
+  .actor-info {
+    padding: 4px;
+  }
+
+  .actor-info h5 {
+    margin: 0;
+    font-size: 0.6rem;
+    color: white;
+  }
+
+  .actor-info p {
+    margin: 2px 0 0;
+    font-size: 0.5rem;
+    color: #aaa;
+  }
+
+  #actors {
+    line-height: 1.6;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: min-height 0.3s ease;
+  }
+
+  #actors.expanded {
+    min-height: 170px;
+  }
+
+  #actors:empty::before {
+    content: "No cast information available";
+    color: #666;
+    font-style: italic;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(227, 11, 93, 0.2), rgba(26, 10, 10, 0.8));
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+  }
+
+  .player-container {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .episodes-container {
+    width: 300px;
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: calc(100vh - 200px);
+    min-height: 400px;
+    max-height: 550px;
+  }
+
+  .episodes-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+  }
+
+  .episodes-header label {
+    color: #E30B5D;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .episodes-subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+  }
+
+  #episodeInfo h5 {
+    font-size: 1rem;
+    margin: 0;
+    color: white;
+  }
+
+  .episode-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+  }
+
+  .episode-item {
+    background-color: #1e1e1e;
+    padding: 12px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 15px;
+  }
+
+  .episode-item > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .episode-item .text-muted {
+    font-size: 0.8rem;
+    color: #aaa;
+    white-space: nowrap;
+    margin-left: 10px;
+  }
+
+  .episode-item.active .text-muted {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .episode-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .episode-item:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .episode-item.active {
+    background-color: #E30B5D;
+    color: white;
+    box-shadow: 0 2px 8px rgba(227, 11, 93, 0.3);
+  }
+
+  .form-select {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 80px;
+  }
+
+  .form-select:hover {
+    border-color: #555;
+  }
+
+  .form-select:focus {
+    outline: none;
+    border-color: #E30B5D;
+    box-shadow: 0 0 0 2px rgba(227, 11, 93, 0.2);
+  }
+
+  .form-select option {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 8px;
+  }
+
+  .form-select option:hover {
+    background-color: #333;
+  }
+
+  .player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .player-header h2 {
+    margin: 0;
+  }
+
+  .server-container {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .server-header {
+    display: flex;
+    justify-content: center;
+  }
+
+  .server-select {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 200px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .server-select:hover {
+    border-color: #555;
+  }
+
+  .server-select:focus {
+    outline: none;
+    border-color: #E30B5D;
+    box-shadow: 0 0 0 2px rgba(227, 11, 93, 0.2);
+  }
+
+  .server-select option {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 8px;
+  }
+
+  .server-select option:hover {
+    background-color: #333;
+  }
+
+  .video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: -100%;
+    bottom: -100%;
+    border-radius: 15px;
+    background: radial-gradient(circle at center, 
+      rgba(227, 11, 93, 0.3) 0%,
+      rgba(227, 11, 93, 0.2) 30%,
+      rgba(26, 10, 10, 0.8) 50%,
+      transparent 70%
+    );
+    z-index: -1;
+    filter: blur(40px);
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+
+  iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .source-buttons {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .source-buttons button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .source-buttons button.active {
+    background-color: #28a745;
+  }
+
+  .select-wrapper {
+    margin: 10px 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .video-wrapper {
+      flex-direction: column;
+    }
+
+    .episodes-container {
+      width: 100%;
+      margin-top: 20px;
+      height: auto;
+      min-height: 300px;
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .episodes-container {
+      padding: 10px;
+    }
+
+    .episode-item {
+      padding: 8px;
+    }
+
+    .server-container {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .server-select {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .episodes-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .form-select {
+      width: 100%;
+    }
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }

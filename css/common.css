@@ -1,0 +1,29 @@
+.title {
+  font-weight: bold;
+  margin-right: 3rem;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: #E30B5D;
+  text-shadow: 0 0 10px rgba(227, 11, 93, 0.3);
+}
+
+.title::before {
+  content: "🍿";
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #aaa;
+  font-size: 1.2rem;
+  display: none;
+}
+
+.no-results i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #E30B5D;
+} 
